@@ -2,7 +2,7 @@ import json
 import struct
 import matplotlib.pyplot as plt
 import numpy as np
-
+from matplotlib.pyplot import figure
 
 class UE_template:
     def __init__(self, ID, x, y):
@@ -80,7 +80,6 @@ Sat_x = [satellite.x for satellite in Satellites]
 Sat_y = [satellite.y for satellite in Satellites]
 Sat_r = [satellite.r for satellite in Satellites]
 Sat_tid = [satellite.tid for satellite in Satellites]
-
 fig, ax = plt.subplots()
 ax.scatter(UEs_x, UEs_y, color='green', alpha=0.3, s=2, marker='o')
 
@@ -102,7 +101,7 @@ plt.ylabel('Y coordinate (km)')
 plt.title('Scenario Start')
 ax.set_aspect('equal', adjustable='box')
 ax.grid(True)
-plt.savefig('Scenario_start.png')  # Save the first plot
+plt.savefig('Scenario_start.png', dpi = 300)  # Save the first plot
 plt.close()  # Close the plot
 
 for sat in Satellites:
@@ -134,5 +133,5 @@ plt.ylabel('Y coordinate (km)')
 plt.title('Scenario End')
 ax.set_aspect('equal', adjustable='box')
 ax.grid(True)
-plt.savefig('Scenario_end.png')  # Save the first plot
+plt.savefig('Scenario_end.png', dpi=300)  # Save the first plot
 plt.close()  # Close the plot

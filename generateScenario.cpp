@@ -115,20 +115,37 @@ generateC(bool feasible, double t_unit, double t_total, std::vector <UE> &UEs, s
     return C;
 }
 
-// Function to generate UE (User Equipment)
 UE generateUE(std::mt19937 &gen) {
     std::uniform_real_distribution<> dis(0, 1);
     double randomNum = dis(gen);
-    if (randomNum < 0.5) {
+    if (randomNum < 0.2) {
         std::uniform_real_distribution<> disx(-5, 5);
         double x = disx(gen);
         std::uniform_real_distribution<> disy(-5, 5);
         double y = disy(gen);
         return UE(x, y);
-    } else {
-        std::uniform_real_distribution<> disx(-75, -70);
+    } else if (randomNum < 0.4) {
+        std::uniform_real_distribution<> disx(-35, -25);
         double x = disx(gen);
-        std::uniform_real_distribution<> disy(-5, 5);
+        std::uniform_real_distribution<> disy(25, 35);
+        double y = disy(gen);
+        return UE(x, y);
+    } else if (randomNum < 0.6) {
+        std::uniform_real_distribution<> disx(-35, -25);
+        double x = disx(gen);
+        std::uniform_real_distribution<> disy(-35, -25);
+        double y = disy(gen);
+        return UE(x, y);
+    } else if (randomNum < 0.8) {
+        std::uniform_real_distribution<> disx(25, 35);
+        double x = disx(gen);
+        std::uniform_real_distribution<> disy(25, 35);
+        double y = disy(gen);
+        return UE(x, y);
+    } else {
+        std::uniform_real_distribution<> disx(25, 35);
+        double x = disx(gen);
+        std::uniform_real_distribution<> disy(-35, -25);
         double y = disy(gen);
         return UE(x, y);
     }
@@ -162,10 +179,10 @@ int main() {
     std::vector<Trajectory> trajectories = {
         Trajectory(0, 300, 250, 0, 100, 200, 1),
         Trajectory(0, 300, 250, 100, -100, 200, 1),
-        Trajectory(-45, 700, 250, -50, 90, 200, 2),
-        Trajectory(-45, 700, 250, -50-50*1.414, 90-200*1.414+50, 200, 2),
-        Trajectory(45, 1100, 250, -150, 0, 200, 3),
-        Trajectory(45, 1100, 250, -150+50*1.414, 0-200*1.414+50, 200, 3)
+        Trajectory(-45, 700, 250, -50, 191.4, 200, 2),
+        Trajectory(-45, 700, 250, -50-50*1.414, -20.7, 200, 2),
+        Trajectory(45, 1100, 250, -150, -8.6, 200, 3),
+        Trajectory(45, 1100, 250, -150+50*1.414, -220.7, 200, 3)
     };
 
     std::vector <UE> UEs;
