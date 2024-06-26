@@ -97,6 +97,7 @@ generateC(bool feasible, double t_unit, double t_total, std::vector <UE> &UEs, s
     }
 
     for (size_t ue_i = 0; ue_i < UEs.size(); ++ue_i) {
+        std::cout << ue_i << std::endl;
         for (size_t s_i = 0; s_i < satellites.size(); ++s_i) {
             for (int t = 0; t < T_SLOT_TOTAL; ++t) {
                 if (satellites[s_i].cover(UEs[ue_i].position(), t, t_unit)) {
