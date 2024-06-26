@@ -15,7 +15,7 @@ with open("./data_simulation.bin", "rb") as file:
         vec2d = []
         for _ in range(dim2):
             dim3 = struct.unpack("Q", file.read(8))[0]
-            vec1d = struct.unpack("{}i".format(dim3), file.read(dim3 * 2))  # Read int values
+            vec1d = struct.unpack("{}h".format(dim3), file.read(dim3 * 2))  # Read int values
             vec2d.append(np.array(vec1d, dtype='b'))
         data.append(vec2d)
 C = np.array(data, dtype='b')

@@ -83,7 +83,7 @@ public:
 };
 
 // Function to generate C matrix
-std::vector <std::vector<std::vector < int>>>
+std::vector <std::vector<std::vector < short>>>
 
 generateC(bool feasible, double t_unit, double t_total, std::vector <UE> &UEs, std::vector <Satellite> &satellites) {
     int T_SLOT_TOTAL = static_cast<int>(t_total / t_unit);
