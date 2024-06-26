@@ -87,13 +87,13 @@ std::vector <std::vector<std::vector < int>>>
 
 generateC(bool feasible, double t_unit, double t_total, std::vector <UE> &UEs, std::vector <Satellite> &satellites) {
     int T_SLOT_TOTAL = static_cast<int>(t_total / t_unit);
-    std::vector < std::vector < std::vector < int>>> C;
+    std::vector < std::vector < std::vector < short>>> C;
 
     if (feasible) {
         C.resize(UEs.size(),
-                 std::vector < std::vector < int >> (satellites.size() + 1, std::vector<int>(T_SLOT_TOTAL, 0)));
+                 std::vector < std::vector < short >> (satellites.size() + 1, std::vector<short>(T_SLOT_TOTAL, 0)));
     } else {
-        C.resize(UEs.size(), std::vector < std::vector < int >> (satellites.size(), std::vector<int>(T_SLOT_TOTAL, 0)));
+        C.resize(UEs.size(), std::vector < std::vector < short >> (satellites.size(), std::vector<short>(T_SLOT_TOTAL, 0)));
     }
 
     for (size_t ue_i = 0; ue_i < UEs.size(); ++ue_i) {
@@ -221,7 +221,7 @@ int main() {
         for (const auto &vec1d_2: vec2d_2) {
             size_t dim3_2 = vec1d_2.size();
             file2.write(reinterpret_cast<char *>(&dim3_2), sizeof(dim3_2));
-            file2.write(reinterpret_cast<const char *>(vec1d_2.data()), dim3_2 * sizeof(int));
+            file2.write(reinterpret_cast<const char *>(vec1d_2.data()), dim3_2 * sizeof(short));
         }
     }
 
